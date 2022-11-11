@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--  -->
+    <link rel="stylesheet" href="index.css">
+    <title>Restaurant App</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header-img w-100">
+        </header>
+        <main class="d-flex w-100">
+            <div class="menu d-flex" id="menu-list">
+    
+            </div>
+
+            <div class="checkout-section d-flex" id="checkout-section">
+                <h1 class="checkout-header w-100 ta-center">Your Order</h1>
+                <div class="checked-out-items d-flex w-100" id="cart-items">
+                </div>
+                <div class="totals d-flex">
+                    <h1>Total price:</h1>
+                    <h1 id="total-price">$0</h1>
+                </div>
+                <button id="complete-order">Complete Order</button>
+            </div>
+        </main>
+    </div>
+    <!-- modal -->
+    <form class="billing-details ta-center" id="billing-details">
+        <button type="button" class="modal-close-btn" id="modal-close-btn">X</button>
+        <h1>Enter card details</h1>
+        <input 
+            type="text" 
+            name="customerName" 
+            id="customer-name"
+            placeholder="Enter your name"
+            required>
+        <input 
+            type="text" 
+            name="cardNumber" 
+            id="card-number"
+            placeholder="Enter card number"
+            required>
+        <input 
+            type="text" 
+            name="cvvNumber" 
+            id="cvv-number"
+            placeholder="Enter cvv-number"
+            required>
+        <button  type="submit" class="pay" id="pay-btn">Pay</button>
+    </form>
+    <script src="index.js" type="module"></script>
+</body>
+</html>
+

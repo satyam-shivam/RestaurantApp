@@ -1,0 +1,329 @@
+body {
+    margin: 0px auto;
+    padding: 0px;
+    font-family: 'Smythe', cursive;
+    background-color: #F3F4F6;
+} 
+
+/* Typography */
+h1{
+    font-weight: 400;
+    font-size: 28px;
+    color: #000000;
+    margin: 0px;
+}
+
+h2{
+    font-weight: 400;
+}
+
+
+/* utility classes */
+
+.d-flex{
+    display: flex;
+}
+
+.w-100{
+    width: 100%;
+}
+
+.ta-center{
+    text-align: center;
+}
+
+/*  */
+
+.container{
+    padding-bottom: 50px;
+}
+
+.header-img{
+    width: 100%;
+    height: 170px;
+    margin-bottom: 70px;
+    background-image: url("images/jimmy.png");
+    background-position: center;
+}
+
+/* menu section */
+.main, .menu, .checkout-section, .star-rating-container{
+    height: auto;
+}
+
+
+main{
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 0px 20px;
+}
+
+.menu, .checkout-section{
+    background-color: white;
+    max-width: 678px;
+    min-width: 620px;
+    flex-direction: column;
+    padding: 40px 30px;
+    box-sizing: border-box;
+}
+
+.menu-item{
+    box-sizing: border-box;
+    margin-bottom: 45px;
+    height: 140px;
+    border-bottom:  1px solid #D2D2D2;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.item-details{
+    width: 44%;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.item-emoji{
+    height: 90px;
+    width: 70px;
+}
+
+.item-desc{
+    flex-direction: column;
+    gap: 8px;
+}
+
+.item-ingredients{
+    font-size: 16px;
+    color: #8B8B8B;
+}
+
+.item-cost{
+    font-size: 20px;
+    color: #000000;
+}
+
+/* for all buttons */
+button{
+    cursor: pointer;
+    border: none;
+    padding: 0px;
+    background-color: white;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+button:active{
+    transform: scale(0.98);
+}
+
+
+/* checkout section */
+
+.checkout-header{
+    margin-bottom: 50px;
+}
+
+.checked-out-items{
+    flex-direction: column;
+    border-bottom: 2px solid #393333;
+}
+
+.checked-out-item{
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.item-option{
+    gap: 14px;
+}
+
+.remove-item{
+    font-weight: 400;
+    font-size: 12px;
+    color: #BBBBBB;
+}
+
+.item-pricing{
+    justify-content: space-between;
+    gap: 50px;
+}
+.totals{
+    justify-content: space-between;
+    margin-top: 18px;
+}
+
+#complete-order, .pay{
+    width: 100%;
+    background: #16DB99;
+    margin: 50px 0px;
+    height: 60px;
+
+    font-family: 'Verdana';
+    font-weight: 700;
+    font-size: 16px;
+    color: #FFFFFF;
+
+    /* shadow/sm */
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+
+/* thanks div */
+
+#thanks-message{
+    width: 100%;
+    height: 120px;
+    background: #ECFDF5;
+    border-radius: 3px;
+    line-height: 120px;
+    font-size: 32px;
+    color: #065F46;
+    margin: 0px auto;
+
+}
+
+/* star-rating */
+
+.star-rating-container{
+    width: 100%;
+    padding: 20px 30px;
+    box-sizing: border-box;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: #ECFDF5;
+}
+
+.star-widget{
+    margin-top: 10px;
+    /* border: 0.5px solid greenyellow; */
+}
+
+.star-rating-container .star-widget input{
+    display: none;
+}
+
+.star-widget label{
+    font-size: 35px;
+    color: #444;
+    padding: 10px;
+    float: right;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.star-widget  label:hover , 
+.star-widget  label:hover ~ label{
+    color: #fd4;
+}
+
+.star-widget input:checked ~ label{
+    color: #fd4;
+}
+
+.star-widget input#rate-5:checked ~ label{
+    color: #fe7;
+    text-shadow: 0 0 10px #952;
+}
+
+
+.star-widget > h2{
+    margin-top: 60px;
+}
+
+#rate-1:checked ~ h2::before{
+    content: "I just hate it 😠";
+}
+
+#rate-2:checked ~ h2::before{
+    content: "I don't like it 😒";
+}
+
+#rate-3:checked ~ h2::before{
+    content: "It is awesome 😀";
+}
+
+#rate-4:checked ~ h2::before{
+    content: "I just like it 😎";
+}
+
+#rate-5:checked ~ h2::before{
+    content: "I just love it 😍";
+}
+
+/* modal */
+
+.modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: #D1D5DB;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:active{
+    color: #9CA3AF;
+    cursor: pointer;
+}
+
+.billing-details{
+    /* "flex when active" */
+    display: none; 
+    flex-direction: column;
+    align-items: center;
+    gap: 23px;
+
+    background-color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: fixed;
+    height: 580px;
+    width: 520px;
+    top: 0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    margin: auto;
+    padding: 0px 20px;
+
+    /* shadow */
+    filter: drop-shadow(5.18654px 5.18654px 255.437px rgba(0, 0, 0, 0.5));
+}
+
+.billing-details input{
+    padding: 30px;
+    box-sizing: border-box;
+    width: 476px;
+    height: 71px;
+    border: none;
+    border: 1.3px solid #757575;
+    border-radius: 4px;
+}
+
+.billing-details input, .billing-details input::placeholder{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 31px;
+}
+
+.billing-details input::placeholder{
+    color: #757575;
+}
+
+.billing-details h1{
+    margin: 40px auto;
+}
+
+.pay{
+    margin-top: 40px auto 20px auto;
+    width: 476px;
+}
