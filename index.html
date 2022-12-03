@@ -17,6 +17,7 @@
 <body>
     <div class="container">
         <header class="header-img w-100">
+            <img src="images/jimmy.png" alt="Restaurant banner image">
         </header>
         <main class="d-flex w-100">
             <div class="menu d-flex" id="menu-list">
@@ -44,18 +45,21 @@
             name="customerName" 
             id="customer-name"
             placeholder="Enter your name"
+            pattern="((?=.*_)^[a-zA-Z][a-zA-Z\s_]{1,18}[a-zA-Z]$)|((?!.*_)^[a-zA-Z][a-zA-Z\s]{1,19}$)"
             required>
         <input 
             type="text" 
             name="cardNumber" 
             id="card-number"
             placeholder="Enter card number"
+            pattern="\b\d{4}(| |-)\d{4}\1\d{4}\1\d{4}\b"
             required>
         <input 
             type="text" 
             name="cvvNumber" 
             id="cvv-number"
             placeholder="Enter cvv-number"
+            pattern="^[0-9]{3}$"
             required>
         <button  type="submit" class="pay" id="pay-btn">Pay</button>
     </form>

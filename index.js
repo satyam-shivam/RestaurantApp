@@ -10,13 +10,13 @@ let checkedOutItems = {}
 
 
 document.addEventListener('click', function(e){
-    if (e.target.getAttribute("data-addItem")){
-        handleAddItem(e.target.getAttribute("data-addItem"))
+    if (e.target.dataset.additem){
+        handleAddItem(e.target.dataset.additem)
 
     }
 
-    else if (e.target.getAttribute("data-removeItemId")){
-        handleRemoveItem(e.target.getAttribute("data-removeItemId"))
+    else if (e.target.dataset.removeitemid){
+        handleRemoveItem(e.target.dataset.removeitemid)
     }
 
     else if(e.target.id == "complete-order"){
@@ -42,10 +42,6 @@ function handleAddItem(itemId){
 
     if (itemId in checkedOutItems){
         checkedOutItems[itemId][1] += 1
-        let itemQuantity = document.getElementById(`item-quantity-${itemId}`)
-        let itemCost = document.getElementById(`item-cost-${itemId}`)
-        itemQuantity.textContent = parseInt(itemQuantity.textContent) + 1
-        itemCost.textContent     = parseInt(itemCost.textContent) + checkedOutItems[itemId][0].price
     }
     else{
         let selectedItem = menuArray.filter(function(menuItem){
@@ -53,18 +49,24 @@ function handleAddItem(itemId){
         })[0]
         // id : [selectedObject , frquency of selection]
         checkedOutItems[itemId] = [selectedItem, 1]
-        renderCheckedOutList()
     }
 
+    renderCheckedOutList()
     totalAmount += checkedOutItems[itemId][0].price
     totalPrice.textContent = '$' + totalAmount
 }
 
 
 function handleRemoveItem(itemId){
-    totalAmount -= parseInt(document.getElementById(`item-cost-${itemId}`).textContent) 
+    if (checkedOutItems[itemId][1] === 1){
+        totalAmount -= parseInt(document.getElementById(`item-cost-${itemId}`).textContent) 
+        delete (checkedOutItems[itemId])
+    }
+    else{
+        checkedOutItems[itemId][1] -= 1
+        totalAmount -= checkedOutItems[itemId][0].price
+    }
     totalPrice.textContent = '$' + totalAmount
-    delete (checkedOutItems[itemId])
     renderCheckedOutList()
 }
 
@@ -80,12 +82,17 @@ function renderCheckedOutList(){
                                     data-removeItemId = ${checkedItem}>remove</button>
                             </div>
                             <div class = "item-pricing d-flex">
-                                <h1 id="item-quantity-${checkedItem}">${checkedOutItems[checkedItem][1]}</h1>
-                                <h1 id="item-cost-${checkedItem}">${checkedOutItems[checkedItem][1] * checkedOutItems[checkedItem][0].price}</h1>
+                                <div>
+                                    <h1>x</h1>
+                                    <h1 id="item-quantity-${checkedItem}">${checkedOutItems[checkedItem][1]}</h1>
+                                </div>
+                                <div>
+                                    <h1>$</h1>
+                                    <h1 id="item-cost-${checkedItem}">${checkedOutItems[checkedItem][1] * checkedOutItems[checkedItem][0].price}</h1>
+                                </div>
                             </div>
                         </div>` 
     }
-    console.log(checkedOutHtml)
     cartItems.innerHTML = checkedOutHtml
 }
 
@@ -122,13 +129,13 @@ function getFeedHtml() {
                             <img src="${menuItem.emoji}" alt="${menuItem.name} representative image">
                             <div class="item-desc d-flex">
                                 <h1 class="item-name">${menuItem.name}</h1>
-                                <span class="item-ingredients">${menuItem.ingredients.join()}</span>
+                                <span class="item-ingredients">${menuItem.ingredients.join(", ")}</span>
                                 <h1 class="item-cost">$ ${menuItem.price}</h1>
                             </div>
                         </div>
                         
                         <button class="add-button">
-                         <img src="images/add-btn.png" alt="Add Button" data-addItem = "${menuItem.id}">
+                         <img src="images/add-btn.png" alt="Add Button" data-additem = "${menuItem.id}">
                         </button>
                     </div>             
                     `
